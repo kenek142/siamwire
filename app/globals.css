@@ -8,9 +8,9 @@
   --line: #2a323c; /* เส้นขอบ */
   --foreground: #e8ecf1;
   --muted: #8e99a6;
-  --accent: #2563eb; /* น้ำเงินหลัก */
-  --accent-strong: #1d4ed8;
-  --accent-soft: #60a5fa;
+  --accent: #f97316; /* ส้มหลัก */
+  --accent-strong: #ea580c;
+  --accent-soft: #fdba74;
   --line-green: #06c755; /* สีปุ่ม LINE */
 }
 

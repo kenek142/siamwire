@@ -155,7 +155,7 @@ export default function Home() {
           <div className="mx-auto grid max-w-6xl gap-10 px-4 py-20 md:grid-cols-2 md:items-center">
             <div className="blueprint relative flex aspect-[4/3] items-center justify-center overflow-hidden border border-line bg-surface">
               <CoilArt className="h-4/5 w-4/5 text-accent" />
-              <span className="absolute bottom-0 left-0 bg-accent px-4 py-2 font-display text-sm font-bold tracking-widest text-white">
+              <span className="absolute bottom-0 left-0 bg-accent px-4 py-2 font-display text-sm font-bold tracking-widest text-background">
                 PC WIRE
               </span>
             </div>
@@ -237,7 +237,7 @@ export default function Home() {
                 href={LINE_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex shrink-0 items-center justify-center gap-2 rounded-md bg-accent px-6 py-3 font-bold text-white hover:bg-accent-strong"
+                className="inline-flex shrink-0 items-center justify-center gap-2 rounded-md bg-accent px-6 py-3 font-bold text-background hover:bg-accent-strong"
               >
                 <ChatIcon />
                 ขอใบเสนอราคาทางไลน์
