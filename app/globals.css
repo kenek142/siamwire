@@ -1,0 +1,74 @@
+@import "tailwindcss";
+
+/* ===== สีและขนาดตัวอักษรของทั้งเว็บ แก้ที่นี่ที่เดียว ===== */
+:root {
+  --background: #0b0d10; /* ดำโรงงาน */
+  --surface: #14181d; /* แผ่นเหล็ก */
+  --surface-2: #1b2128;
+  --line: #2a323c; /* เส้นขอบ */
+  --foreground: #e8ecf1;
+  --muted: #8e99a6;
+  --accent: #2563eb; /* น้ำเงินหลัก */
+  --accent-strong: #1d4ed8;
+  --accent-soft: #60a5fa;
+  --line-green: #06c755; /* สีปุ่ม LINE */
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-line: var(--line);
+  --color-foreground: var(--foreground);
+  --color-muted: var(--muted);
+  --color-accent: var(--accent);
+  --color-accent-strong: var(--accent-strong);
+  --color-accent-soft: var(--accent-soft);
+  --color-line-green: var(--line-green);
+
+  --font-sans: var(--font-body);
+  --font-display: var(--font-heading);
+
+  --text-hero: clamp(2.75rem, 11vw, 6rem);
+  --text-hero--line-height: 1.05;
+  --text-section: clamp(1.75rem, 5vw, 2.75rem);
+  --text-section--line-height: 1.25;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+}
+
+/* พื้นหลังลายตารางแบบพิมพ์เขียว */
+.blueprint {
+  background-image:
+    linear-gradient(var(--line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--line) 1px, transparent 1px);
+  background-size: 48px 48px;
+}
+
+/* หมุดย้ำมุมแผ่นเหล็ก */
+.rivets {
+  position: relative;
+}
+.rivets::before,
+.rivets::after {
+  content: "";
+  position: absolute;
+  top: 12px;
+  width: 6px;
+  height: 6px;
+  border-radius: 9999px;
+  background: var(--line);
+}
+.rivets::before {
+  left: 12px;
+}
+.rivets::after {
+  right: 12px;
+}
