@@ -26,8 +26,8 @@
   --color-accent-soft: var(--accent-soft);
   --color-line-green: var(--line-green);
 
-  --font-sans: var(--font-body);
-  --font-display: var(--font-heading);
+  --font-sans: var(--font-latin), var(--font-thai), serif;
+  --font-display: var(--font-latin), var(--font-thai), serif;
 
   --text-hero: clamp(2.75rem, 11vw, 6rem);
   --text-hero--line-height: 1.05;

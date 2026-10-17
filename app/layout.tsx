@@ -1,17 +1,17 @@
 import type { Metadata } from "next";
-import { IBM_Plex_Sans_Thai, Kanit } from "next/font/google";
+import { Noto_Serif_Thai, Playfair_Display } from "next/font/google";
 import "./globals.css";
 
-const body = IBM_Plex_Sans_Thai({
-  variable: "--font-body",
-  subsets: ["thai", "latin"],
-  weight: ["400", "500", "700"],
+// ตัวอังกฤษใช้ Playfair Display ส่วนตัวไทยตกไปใช้ Noto Serif Thai
+const latin = Playfair_Display({
+  variable: "--font-latin",
+  subsets: ["latin"],
+  adjustFontFallback: false,
 });
 
-const heading = Kanit({
-  variable: "--font-heading",
-  subsets: ["thai", "latin"],
-  weight: ["500", "700", "800"],
+const thai = Noto_Serif_Thai({
+  variable: "--font-thai",
+  subsets: ["thai"],
 });
 
 const title = "Siam Wire | ลวด PC Wire สำหรับงานเสาคอนกรีตและสะพาน";
@@ -39,7 +39,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="th"
-      className={`${body.variable} ${heading.variable} h-full antialiased`}
+      className={`${latin.variable} ${thai.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col font-sans">{children}</body>
     </html>
