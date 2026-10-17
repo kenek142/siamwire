@@ -3,24 +3,49 @@ const PHONE_URL = "tel:0859268888";
 const PHONE_LABEL = "085-926-8888";
 const FACEBOOK_URL = "https://www.facebook.com/search/top?q=Siam%20Wire";
 
-const features = [
+const highlights = [
   {
-    no: "01",
     title: "สินค้ามีคุณภาพ",
-    text: "ลวด PC Wire แข็งแรง สม่ำเสมอทุกม้วน เหมาะกับงานคอนกรีตอัดแรงที่ต้องการความทนทานสูง",
+    text: "แข็งแรง สม่ำเสมอทุกม้วน",
     icon: <ShieldIcon />,
   },
   {
-    no: "02",
     title: "ราคาคุ้มค่า",
-    text: "ราคาตรงไปตรงมา คุ้มค่ากับคุณภาพ ช่วยคุมต้นทุนการผลิตของโรงงานคุณได้ดีขึ้น",
+    text: "ตรงไปตรงมา ช่วยคุมต้นทุน",
     icon: <TagIcon />,
   },
   {
-    no: "03",
     title: "ส่งไว",
-    text: "จัดส่งรวดเร็วตามนัด ไลน์การผลิตของคุณเดินต่อได้ ไม่ต้องหยุดรอวัตถุดิบ",
+    text: "ไลน์ผลิตไม่ต้องหยุดรอ",
     icon: <TruckIcon />,
+  },
+  {
+    title: "ปรึกษาฟรี",
+    text: "ทักไลน์ ตอบไว ได้ราคาทันที",
+    icon: <ChatIcon />,
+  },
+];
+
+const applications = [
+  {
+    title: "เสาไฟฟ้าคอนกรีตอัดแรง",
+    text: "ลวดรับแรงดึงสูง ช่วยให้เสายาวและรับน้ำหนักได้ดี",
+    art: <PoleArt />,
+  },
+  {
+    title: "เสาเข็มคอนกรีต",
+    text: "สำหรับเสาเข็มอัดแรงในงานฐานรากอาคารและโรงงาน",
+    art: <PileArt />,
+  },
+  {
+    title: "แผ่นพื้นสำเร็จรูป",
+    text: "แผ่นพื้นอัดแรงที่ต้องการความแข็งแรงและความสม่ำเสมอ",
+    art: <SlabArt />,
+  },
+  {
+    title: "งานสะพาน",
+    text: "คานคอนกรีตอัดแรงในงานโครงสร้างสะพาน",
+    art: <BridgeArt />,
   },
 ];
 
@@ -43,11 +68,18 @@ const faqs = [
   },
 ];
 
+const menu = [
+  { href: "#about", label: "เกี่ยวกับเรา" },
+  { href: "#product", label: "สินค้าและราคา" },
+  { href: "#faq", label: "คำถามที่พบบ่อย" },
+  { href: "#contact", label: "ติดต่อเรา" },
+];
+
 export default function Home() {
   return (
     <div className="flex flex-1 flex-col pb-20 md:pb-0">
       {/* แถบบน */}
-      <header className="sticky top-0 z-20 border-b border-line bg-background/90 backdrop-blur">
+      <header className="fixed inset-x-0 top-0 z-20 border-b border-white/10 bg-background/70 backdrop-blur">
         <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-3">
           <a href="#top" className="flex items-center gap-2">
             <CoilIcon className="h-7 w-7 text-accent" />
@@ -56,18 +88,11 @@ export default function Home() {
             </span>
           </a>
           <nav className="hidden items-center gap-6 text-sm text-muted md:flex">
-            <a href="#features" className="hover:text-foreground">
-              จุดเด่น
-            </a>
-            <a href="#product" className="hover:text-foreground">
-              สินค้าและราคา
-            </a>
-            <a href="#faq" className="hover:text-foreground">
-              คำถามที่พบบ่อย
-            </a>
-            <a href="#contact" className="hover:text-foreground">
-              ติดต่อเรา
-            </a>
+            {menu.map((m) => (
+              <a key={m.href} href={m.href} className="hover:text-foreground">
+                {m.label}
+              </a>
+            ))}
           </nav>
           <a
             href={LINE_URL}
@@ -81,24 +106,22 @@ export default function Home() {
       </header>
 
       <main id="top" className="flex-1">
-        {/* ส่วนหัว */}
-        <section className="blueprint relative overflow-hidden border-b border-line">
-          <div className="absolute inset-0 bg-gradient-to-b from-background/40 via-background/80 to-background" />
-          <div className="relative mx-auto max-w-6xl px-4 py-20 md:py-32">
-            <p className="mb-5 inline-flex items-center gap-2 border border-accent/50 bg-accent/10 px-3 py-1 text-xs font-medium tracking-widest text-accent-soft">
-              <span className="h-2 w-2 bg-accent" />
-              PC WIRE · ลวดอัดแรง
+        {/* ส่วนหัวเต็มจอ */}
+        <section className="relative flex min-h-svh items-center overflow-hidden border-b border-line">
+          <div className="blueprint absolute inset-0 opacity-60" />
+          <CoilArt className="absolute -right-40 top-1/2 h-[46rem] w-[46rem] -translate-y-1/2 text-accent/40 md:-right-24" />
+          <div className="absolute inset-0 bg-gradient-to-r from-background via-background/85 to-background/30" />
+          <div className="relative mx-auto w-full max-w-6xl px-4 pb-16 pt-28">
+            <p className="font-display text-lg italic text-accent-soft md:text-xl">
+              &ldquo;Strength in every strand&rdquo;
             </p>
-            <h1 className="font-display text-hero font-extrabold tracking-tight">
+            <h1 className="mt-3 font-display text-hero font-extrabold tracking-tight">
               SIAM <span className="text-accent">WIRE</span>
             </h1>
             <p className="mt-6 max-w-2xl font-display text-2xl font-medium leading-snug md:text-3xl">
               ลวด PC Wire คุณภาพดี ราคาคุ้มค่า ส่งไว
               <br className="hidden sm:block" />
               สำหรับโรงงานเสาคอนกรีตและงานสะพาน
-            </p>
-            <p className="mt-4 max-w-xl text-muted">
-              วัตถุดิบหลักที่ไลน์ผลิตของคุณไว้ใจได้ ทักมาขอราคาได้ทันที
             </p>
             <div className="mt-10 flex flex-col gap-3 sm:flex-row">
               <a
@@ -111,37 +134,56 @@ export default function Home() {
                 ทักไลน์เลย
               </a>
               <a
-                href={PHONE_URL}
-                className="inline-flex items-center justify-center gap-2 rounded-md border border-line bg-surface px-8 py-4 text-lg font-bold hover:border-accent"
+                href="#product"
+                className="inline-flex items-center justify-center gap-2 rounded-md border border-white/20 px-8 py-4 text-lg font-bold hover:border-accent"
               >
-                <PhoneIcon />
-                โทร {PHONE_LABEL}
+                ดูสินค้าและราคา
               </a>
             </div>
           </div>
+          <a
+            href="#about"
+            aria-label="เลื่อนลง"
+            className="absolute bottom-6 left-1/2 hidden h-10 w-6 -translate-x-1/2 justify-center rounded-full border-2 border-white/40 pt-2 md:flex"
+          >
+            <span className="h-2 w-1 animate-bounce rounded-full bg-white/70" />
+          </a>
         </section>
 
-        {/* จุดเด่น */}
-        <section id="features" className="mx-auto max-w-6xl scroll-mt-16 px-4 py-20">
-          <SectionTitle eyebrow="WHY SIAM WIRE" title="ทำไมต้อง Siam Wire" />
-          <div className="mt-10 grid gap-4 md:grid-cols-3">
-            {features.map((f) => (
-              <div
-                key={f.no}
-                className="rivets border border-line bg-surface p-6 pt-10"
-              >
-                <div className="flex items-center justify-between">
-                  <span className="text-accent">{f.icon}</span>
-                  <span className="font-display text-4xl font-extrabold text-line">
-                    {f.no}
-                  </span>
-                </div>
-                <h3 className="mt-4 font-display text-2xl font-bold">
-                  {f.title}
-                </h3>
-                <p className="mt-2 text-muted">{f.text}</p>
+        {/* เกี่ยวกับเรา */}
+        <section id="about" className="scroll-mt-16">
+          <div className="mx-auto grid max-w-6xl gap-10 px-4 py-20 md:grid-cols-2 md:items-center">
+            <div className="blueprint relative flex aspect-[4/3] items-center justify-center overflow-hidden border border-line bg-surface">
+              <CoilArt className="h-4/5 w-4/5 text-accent" />
+              <span className="absolute bottom-0 left-0 bg-accent px-4 py-2 font-display text-sm font-bold tracking-widest text-white">
+                PC WIRE
+              </span>
+            </div>
+            <div>
+              <SectionTitle eyebrow="ABOUT US" title="เกี่ยวกับ Siam Wire" />
+              <p className="mt-5 text-muted">
+                Siam Wire จำหน่ายลวดอัดแรง PC Wire
+                ให้กับโรงงานผลิตเสาคอนกรีตและผู้รับเหมางานสะพาน
+                เราตั้งใจส่งลวดคุณภาพดีในราคาที่คุ้มค่า และส่งถึงมือลูกค้าให้เร็วที่สุด
+                ไลน์ผลิตของคุณจะได้เดินต่อได้ไม่สะดุด
+              </p>
+              <div className="mt-8 grid grid-cols-2 gap-3">
+                {highlights.map((h) => (
+                  <div
+                    key={h.title}
+                    className="flex items-start gap-3 border border-line bg-surface p-4"
+                  >
+                    <span className="mt-0.5 shrink-0 text-accent">{h.icon}</span>
+                    <span>
+                      <span className="block font-display font-bold">
+                        {h.title}
+                      </span>
+                      <span className="block text-sm text-muted">{h.text}</span>
+                    </span>
+                  </div>
+                ))}
               </div>
-            ))}
+            </div>
           </div>
         </section>
 
@@ -151,24 +193,38 @@ export default function Home() {
           className="scroll-mt-16 border-y border-line bg-surface"
         >
           <div className="mx-auto max-w-6xl px-4 py-20">
-            <SectionTitle eyebrow="PRODUCT" title="สินค้าและราคา" />
-            <div className="mt-10 grid overflow-hidden border border-line md:grid-cols-5">
-              <div className="blueprint relative flex min-h-56 items-center justify-center bg-background md:col-span-2">
-                <CoilIcon className="h-40 w-40 text-accent" />
-              </div>
-              <div className="bg-surface-2 p-6 md:col-span-3 md:p-10">
+            <div className="text-center">
+              <SectionTitle eyebrow="OUR PRODUCT" title="สินค้าและราคา" center />
+              <p className="mx-auto mt-3 max-w-xl text-muted">
+                ลวดอัดแรง PC Wire สำหรับงานคอนกรีตอัดแรงหลากหลายประเภท
+              </p>
+            </div>
+
+            <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+              {applications.map((a) => (
+                <div
+                  key={a.title}
+                  className="group overflow-hidden border border-line bg-surface-2 transition-colors hover:border-accent"
+                >
+                  <div className="blueprint flex h-36 items-center justify-center bg-background text-accent-soft transition-colors group-hover:text-accent">
+                    {a.art}
+                  </div>
+                  <div className="p-5">
+                    <h3 className="font-display text-lg font-bold">{a.title}</h3>
+                    <p className="mt-1 text-sm text-muted">{a.text}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            <div className="mt-6 flex flex-col gap-6 border border-accent/50 bg-accent/10 p-6 md:flex-row md:items-center md:justify-between md:p-8">
+              <div>
                 <p className="text-sm tracking-widest text-accent-soft">
                   PRESTRESSED CONCRETE WIRE
                 </p>
-                <h3 className="mt-2 font-display text-3xl font-bold">
-                  ลวดอัดแรง PC Wire
-                </h3>
-                <p className="mt-3 text-muted">
-                  สำหรับผลิตเสาคอนกรีตอัดแรง เสาเข็ม แผ่นพื้น และงานโครงสร้างสะพาน
-                </p>
-                <div className="mt-6 flex items-end gap-2 border-t border-line pt-6">
-                  <span className="text-muted">เริ่มต้น</span>
-                  <span className="font-display text-6xl font-extrabold leading-none text-foreground">
+                <div className="mt-2 flex items-end gap-2">
+                  <span className="text-muted">ราคาเริ่มต้น</span>
+                  <span className="font-display text-6xl font-extrabold leading-none">
                     24
                   </span>
                   <span className="pb-1 text-lg">บาท / กก.</span>
@@ -176,23 +232,25 @@ export default function Home() {
                 <p className="mt-2 text-sm text-muted">
                   ราคาขึ้นกับขนาดและปริมาณการสั่ง ทักไลน์เพื่อรับใบเสนอราคา
                 </p>
-                <a
-                  href={LINE_URL}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="mt-6 inline-flex w-full items-center justify-center gap-2 rounded-md bg-accent px-6 py-3 font-bold text-white hover:bg-accent-strong sm:w-auto"
-                >
-                  <ChatIcon />
-                  ขอใบเสนอราคาทางไลน์
-                </a>
               </div>
+              <a
+                href={LINE_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex shrink-0 items-center justify-center gap-2 rounded-md bg-accent px-6 py-3 font-bold text-white hover:bg-accent-strong"
+              >
+                <ChatIcon />
+                ขอใบเสนอราคาทางไลน์
+              </a>
             </div>
           </div>
         </section>
 
         {/* คำถามที่พบบ่อย */}
         <section id="faq" className="mx-auto max-w-3xl scroll-mt-16 px-4 py-20">
-          <SectionTitle eyebrow="FAQ" title="คำถามที่พบบ่อย" />
+          <div className="text-center">
+            <SectionTitle eyebrow="FAQ" title="คำถามที่พบบ่อย" center />
+          </div>
           <div className="mt-10 space-y-3">
             {faqs.map((item) => (
               <details
@@ -218,10 +276,12 @@ export default function Home() {
         >
           <div className="bg-background/85">
             <div className="mx-auto max-w-6xl px-4 py-20">
-              <SectionTitle eyebrow="CONTACT" title="ติดต่อเรา" />
-              <p className="mt-3 text-muted">
-                เวลาทำการ จันทร์–เสาร์ 08:00–17:00 น.
-              </p>
+              <div className="text-center">
+                <SectionTitle eyebrow="CONTACT" title="ติดต่อเรา" center />
+                <p className="mt-3 text-muted">
+                  เวลาทำการ จันทร์–เสาร์ 08:00–17:00 น.
+                </p>
+              </div>
               <div className="mt-10 grid gap-4 md:grid-cols-3">
                 <ContactCard
                   href={LINE_URL}
@@ -251,13 +311,65 @@ export default function Home() {
       </main>
 
       {/* ส่วนท้าย */}
-      <footer className="border-t border-line bg-surface">
-        <div className="mx-auto flex max-w-6xl flex-col gap-2 px-4 py-8 text-sm text-muted md:flex-row md:items-center md:justify-between">
-          <span className="font-display font-bold tracking-wider text-foreground">
-            SIAM WIRE
-          </span>
-          <span>ลวดอัดแรง PC Wire สำหรับงานเสาคอนกรีตและสะพาน</span>
-          <span>© 2026 Siam Wire</span>
+      <footer className="relative overflow-hidden border-t border-line bg-surface">
+        <CoilArt className="absolute -bottom-32 -right-24 h-80 w-80 text-line" />
+        <div className="relative mx-auto grid max-w-6xl gap-10 px-4 py-14 md:grid-cols-3">
+          <div>
+            <div className="flex items-center gap-2">
+              <CoilIcon className="h-7 w-7 text-accent" />
+              <span className="font-display text-lg font-bold tracking-wider">
+                SIAM WIRE
+              </span>
+            </div>
+            <p className="mt-3 text-sm text-muted">
+              ลวดอัดแรง PC Wire สำหรับโรงงานเสาคอนกรีตและงานสะพาน
+            </p>
+          </div>
+          <div>
+            <p className="font-display font-bold">เมนู</p>
+            <ul className="mt-3 space-y-2 text-sm text-muted">
+              {menu.map((m) => (
+                <li key={m.href}>
+                  <a href={m.href} className="hover:text-foreground">
+                    {m.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div>
+            <p className="font-display font-bold">ติดต่อ</p>
+            <ul className="mt-3 space-y-2 text-sm text-muted">
+              <li>
+                <a
+                  href={LINE_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-foreground"
+                >
+                  LINE: kenek3332
+                </a>
+              </li>
+              <li>
+                <a href={PHONE_URL} className="hover:text-foreground">
+                  โทร: {PHONE_LABEL}
+                </a>
+              </li>
+              <li>
+                <a
+                  href={FACEBOOK_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-foreground"
+                >
+                  Facebook: Siam Wire
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div className="relative border-t border-line py-5 text-center text-xs text-muted">
+          © 2026 Siam Wire. All rights reserved.
         </div>
       </footer>
 
@@ -284,12 +396,25 @@ export default function Home() {
   );
 }
 
-function SectionTitle({ eyebrow, title }: { eyebrow: string; title: string }) {
+function SectionTitle({
+  eyebrow,
+  title,
+  center,
+}: {
+  eyebrow: string;
+  title: string;
+  center?: boolean;
+}) {
   return (
     <div>
-      <p className="flex items-center gap-3 text-xs font-medium tracking-[0.3em] text-accent-soft">
+      <p
+        className={`flex items-center gap-3 text-xs font-medium tracking-[0.3em] text-accent-soft ${
+          center ? "justify-center" : ""
+        }`}
+      >
         <span className="h-px w-8 bg-accent" />
         {eyebrow}
+        {center && <span className="h-px w-8 bg-accent" />}
       </p>
       <h2 className="mt-3 font-display text-section font-bold">{title}</h2>
     </div>
@@ -338,6 +463,85 @@ function ContactCard({
   );
 }
 
+/* ===== ภาพประกอบ ===== */
+function CoilArt({ className }: { className?: string }) {
+  const rings = [95, 85, 75, 65, 55, 45, 35];
+  return (
+    <svg viewBox="0 0 200 200" className={className} aria-hidden>
+      {rings.map((r, i) => (
+        <circle
+          key={r}
+          cx="100"
+          cy="100"
+          r={r}
+          fill="none"
+          stroke="currentColor"
+          strokeWidth={i % 2 ? 1 : 3}
+          strokeDasharray={i % 3 === 1 ? "2 4" : undefined}
+        />
+      ))}
+      <circle cx="100" cy="100" r="22" fill="currentColor" opacity="0.15" />
+    </svg>
+  );
+}
+
+const artProps = {
+  viewBox: "0 0 120 80",
+  className: "h-24 w-36",
+  fill: "none",
+  stroke: "currentColor",
+  strokeWidth: 2,
+  "aria-hidden": true,
+};
+
+function PoleArt() {
+  return (
+    <svg {...artProps}>
+      <path d="M60 6 L56 76 H64 Z" />
+      <path d="M38 16 H82 M44 26 H76" />
+      <path d="M58 20 V70 M62 20 V70" strokeDasharray="3 3" />
+    </svg>
+  );
+}
+
+function PileArt() {
+  return (
+    <svg {...artProps}>
+      <path d="M10 30 H110" strokeDasharray="4 4" />
+      {[30, 55, 80].map((x) => (
+        <g key={x}>
+          <rect x={x} y="14" width="10" height="56" />
+          <path d={`M${x + 5} 18 V66`} strokeDasharray="3 3" />
+        </g>
+      ))}
+    </svg>
+  );
+}
+
+function SlabArt() {
+  return (
+    <svg {...artProps}>
+      <rect x="10" y="30" width="100" height="20" />
+      {[22, 40, 58, 76, 94].map((x) => (
+        <circle key={x} cx={x} cy="40" r="5" />
+      ))}
+      <path d="M10 56 H110" strokeDasharray="3 3" />
+    </svg>
+  );
+}
+
+function BridgeArt() {
+  return (
+    <svg {...artProps}>
+      <path d="M6 30 H114" />
+      <path d="M6 38 H114" strokeDasharray="3 3" />
+      <path d="M30 38 V74 M90 38 V74" />
+      <path d="M30 38 Q60 60 90 38" />
+      <path d="M4 74 H116" />
+    </svg>
+  );
+}
+
 /* ===== ไอคอน ===== */
 const iconProps = {
   width: 24,
@@ -364,7 +568,7 @@ function CoilIcon({ className }: { className?: string }) {
 
 function ShieldIcon() {
   return (
-    <svg {...iconProps} width={32} height={32}>
+    <svg {...iconProps}>
       <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
       <path d="m9 12 2 2 4-4" />
     </svg>
@@ -373,7 +577,7 @@ function ShieldIcon() {
 
 function TagIcon() {
   return (
-    <svg {...iconProps} width={32} height={32}>
+    <svg {...iconProps}>
       <path d="M20.59 13.41 13.42 20.58a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z" />
       <circle cx="7" cy="7" r="1.5" />
     </svg>
@@ -382,7 +586,7 @@ function TagIcon() {
 
 function TruckIcon() {
   return (
-    <svg {...iconProps} width={32} height={32}>
+    <svg {...iconProps}>
       <path d="M1 3h15v13H1z" />
       <path d="M16 8h4l3 3v5h-7V8z" />
       <circle cx="5.5" cy="18.5" r="2.5" />
